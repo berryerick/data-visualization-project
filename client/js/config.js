@@ -9,8 +9,8 @@ project_week.config(function($routeProvider){
   .when('/location',{
     templateUrl: "/partials/location.html"
   })
-  .when('/gameStats',{
-    templateUrl: "/partials/gameStats.html"
+  .when('/time',{
+    templateUrl: "/partials/time.html"
   })
   .otherwise({
     redirectTo: '/color'

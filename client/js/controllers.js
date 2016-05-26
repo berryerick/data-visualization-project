@@ -30,14 +30,21 @@ project_week.controller('colorsController', function(packageFactory){
           .data(data)
           .enter()
             .append('rect')
-            .attr('height', function(d){
-              return ((d.count/that.maxHueCount)*100 + '%')
-            })
+            // .attr('height', 100)
             .attr('width', (100/18)+'%')
             .attr('x', function(d,i){ return (i*(100/18))+"%" })
-            .attr('y', function(d){ return (100-((d.count/that.maxHueCount)*100))+ '%'})
+            .attr('y', '100%')
             .attr('fill', function(d){ return d.color })
             .attr('class', "hue-rect")
+            .transition()
+              .delay(200)
+              .duration(500)
+              .ease('linear')
+              .attr('height', function(d){
+                return ((d.count/that.maxHueCount)*100 + '%')
+                })
+              .attr('y', function(d){ return (100-((d.count/that.maxHueCount)*100))+ '%'})
+
       })
 
 
@@ -66,7 +73,7 @@ project_week.controller('locationsController', function(packageFactory){
       var canvY = 100
       var canvas = d3.select('div.allClicksHeatMap').append('svg')
       .attr('width', '100%')
-      .attr('height', 560)
+      .attr('height', 400)
 
 
       // .attr('width', boardX/2 +100)
@@ -81,7 +88,7 @@ project_week.controller('locationsController', function(packageFactory){
 
     canvas.append("rect")
       .attr('width', '100%')
-      .attr('height', '100%')
+      .attr('height', 560)
       .attr('fill', '#304040')
 
     for (var i = 10; i < 100; i += 10) {
@@ -108,9 +115,34 @@ project_week.controller('locationsController', function(packageFactory){
         .attr('cx', function(d){return ((d.data.x)/boardX)*100 +"%" })
         .attr('cy', function(d){return ((d.data.y)/boardY)*100 +"%" })
         .attr('r', 10)
-        .attr('fill', 'rgba(240, 100,100, .7)')
+        .attr('fill',function(d){return d.data.color} )
+        .attr('opacity', '.3')
 
 
+  })
+
+})
+
+project_week.controller('timesController', function(packageFactory){
+  this.errors = []
+  var that = this
+
+  packageFactory.get()
+
+  packageFactory.clicksOverTime(function(data){
+
+    var canvas = d3.select('div.clicksOverTime').append('svg')
+    .attr('width', '100%')
+    .attr('height', 400)
+
+    var background = canvas.append("rect")
+      .attr('width', '100%')
+      .attr('height', 560)
+      .attr('fill', '#304040')
+
+    // var Xaxis =
+    var line = d3.svg.line()
+                  .x(function(d, i){ return (i/data.length)*100 + "%"})
 
   })
 
