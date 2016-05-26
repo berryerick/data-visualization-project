@@ -1,0 +1,105 @@
+:root{
+  --main-color: blue;
+  --large-box-width: 62%;
+  --stroke-color: #486668;
+}
+
+*{
+  font-family: Helvetica, sans-serif;
+  font-weight: 200;
+}
+nav{
+  height: 30px;
+}
+  div.navlinks{
+    margin: 0px 30px;
+    height: 30px;
+  }
+    div.navlinks form{
+      display: inline-block;
+      margin: 0;
+      border-collapse: collapse;
+      height: 100%;
+      width: 100px;
+
+    }
+    button.nav-btn{
+      background: none;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      color: white;
+      display: inline-block;
+      font-size: 1em;
+    }
+    button.nav-btn:hover{
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+body, html{
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: white;
+  background-color: #304040;
+}
+a{
+  color: white;
+}
+
+  div.container{
+    width: 100%;
+    /*text-align: center;*/
+    padding:  1.5%;;
+  }
+    div.box{
+      width: 30%;
+      padding: 0.7%;
+      text-align: center;
+      background-color: #203030;
+      display: inline-block;
+      border: 2px solid #486668;
+      margin: 0.25%;
+      vertical-align: top;
+    }
+    div.large-box{
+      width: 60%;
+      /*height:*/
+    }
+      h3.box-title{
+        height: 20px;
+        padding: 5px;
+        text-align: left;
+        font-weight: 600;
+      }
+      div.box-data{
+        height: 280px;
+      }
+      div.large-box-data{
+        min-height: 280px;
+      }
+      div.box-description{
+        text-align: left;
+      }
+      .hue-rect{
+        vertical-align: text-bottom;
+      }
+
+div.averageByClick{
+
+
+}
+div.gradient-section{
+  min-height: 280px;
+  height: 100%;
+  border-collapse: collapse;
+  border: none;
+  min-width: 30px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+.grid{
+  stroke: #486668;
+  stroke-width: 1;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="project_week">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing visualization</title>
+    <link rel="stylesheet" href="./css/main.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/factories.js"></script>
+    <script src="./js/controllers.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="navlinks">
+        <form action="#/colors" method="get">
+          <button class="nav-btn" type="submit" name="button">Colors</button>
+        </form>
+        <form action="#/location" method="get">
+          <button class="nav-btn" type="submit" name="button">Locations</button>
+        </form>
+        <form action="#/colors" method="get">
+          <button class="nav-btn" type="submit" name="button">Colors</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container" ng-view="">
+
+    </div>
+  </body>
+</html>
