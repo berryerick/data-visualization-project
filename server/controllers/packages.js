@@ -4,9 +4,9 @@ var mongoose = require('mongoose')
 module.exports = {
 
   index: function(req, res){
-    console.log("sample.json");
-    
-    res.json('sample.json')
+    // console.log("sample.json");
+
+    res.json('http://52.39.117.185/display')
 
   },
 }

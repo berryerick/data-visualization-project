@@ -5,9 +5,9 @@ var packages = require('../controllers/packages.js');
 
 
 module.exports = function(app) {
-  // app.get('/data', function(req, res){
-  //   console.log("hello World");
-  //   // res.json({app: 'working'})
-  //   packages.index(req, res)
-  // })
+  app.get('/data', function(req, res){
+    console.log("hello World");
+    // res.json({app: 'working'})
+    packages.index(req, res)
+  })
 }

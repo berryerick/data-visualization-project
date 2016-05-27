@@ -1,25 +1,18 @@
 project_week.controller('colorsController', function(packageFactory){
   console.log('in colorsController')
   var that = this
-  this.errors = []
+  that.errors = []
 
-  this.getPackages = function(){
-      this.packageData = {
-        colorGradientByGuess: packageFactory.colorGradientByGuess,
-        colorGradientByGame: packageFactory.colorGradientByGame,
-        totalAvgColor: packageFactory.totalAvgColor,
-        buttonPresses: packageFactory.buttonPresses,
-        hues: packageFactory.hues,
-        maxHueCount: packageFactory.maxHueCount,
-        totalClicks: packageFactory.totalClicks,
-      }
-  }
-
-  this.getPackages()
-  console.log(this.packageData);
-
-
-  this.hueHistogram = function(data){
+  // that.getPackages = packageFactory.getData(function(digestedData){
+  //   that.packageData = digestedData
+  // })
+  packageFactory.start(
+  // that.getPackages()
+  // console.log(that.packageData);
+  function(digestedData){
+  that.packageData = digestedData
+  console.log("&&&&&&&&&&&&&&&&&&&&&&",digestedData);
+  that.hueHistogram = function(data){
         var width = 100
         var canvas = d3.select("div.hueHistogram").append('svg')
           .attr('width', "100%")
@@ -48,24 +41,24 @@ project_week.controller('colorsController', function(packageFactory){
               .attr('y', function(d){ return (100-((d.count/that.packageData.maxHueCount)*100))+ '%'})
 
       }
-      console.log(this.packageData.hues);
-this.hueHistogram(this.packageData.hues)
-
+      console.log(that.packageData.hues);
+that.hueHistogram(that.packageData.hues)
+})
 
 })
 
 project_week.controller('locationsController', function(packageFactory){
   console.log('in locationsController')
   var that = this
-  this.errors = []
+  that.errors = []
 
-  this.getPackages = function(){
+  that.getPackages = function(){
     packageFactory.getData(function(data){
       that.packageData = data
     })
   }
-  this.getPackages()
-  // console.log(this.packageData);
+  that.getPackages()
+  // console.log(that.packageData);
 
 
 
@@ -122,11 +115,11 @@ project_week.controller('locationsController', function(packageFactory){
 })
 
 project_week.controller('timesController', function(packageFactory){
-  this.errors = []
+  that.errors = []
   var that = this
 
-  this.getPackages = function(){
-      this.packageData = {
+  that.getPackages = function(){
+      that.packageData = {
         colorGradientByGuess: packageFactory.colorGradientByGuess,
         colorGradientByGame: packageFactory.colorGradientByGame,
         totalAvgColor: packageFactory.totalAvgColor,
@@ -138,9 +131,9 @@ project_week.controller('timesController', function(packageFactory){
       }
   }
 
-  this.getPackages()
+  that.getPackages()
 
-  console.log(this.packageData);
+  console.log(that.packageData);
 
   packageFactory.clicksOverTime(function(data){
 

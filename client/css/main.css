@@ -112,6 +112,7 @@ a{
         margin-top: 10px;
       }
       .hue-rect{
+        hie
         vertical-align: text-bottom;
       }
 
@@ -120,7 +121,7 @@ div.averageByClick{
 
 }
 div.gradient-section{
-  min-height: 280px;
+  /*min-height: 280px;*/
   height: 100%;
   border-collapse: collapse;
   border: none;
