@@ -11,7 +11,7 @@ project_week.controller('colorsController', function(packageFactory){
         buttonPresses: packageFactory.buttonPresses,
         hues: packageFactory.hues,
         maxHueCount: packageFactory.maxHueCount,
-        totalClicks: packageFactory.maxHueCount,
+        totalClicks: packageFactory.totalClicks,
       }
   }
 
@@ -79,17 +79,6 @@ project_week.controller('locationsController', function(packageFactory){
       .attr('width', '100%')
       .attr('height', '100%')
 
-
-      // .attr('width', boardX/2 +100)
-      // .attr('height', boardY/2 +100)
-
-      // .attr('fill', '#888888')
-    //
-    // var x = d3.scale.identity().domain([0,boardX])
-    // var y = d3.scale.identity().domain([0,boardY])
-    // var xAxis = d3.svg.axis().scale(x).ticks(0).orient('bottom')
-    // var yAxis = d3.svg.axis().scale(y).ticks(0).orient('right')
-
     canvas.append("rect")
       .attr('width', '100%')
       .attr('height', '100%')
@@ -121,10 +110,11 @@ project_week.controller('locationsController', function(packageFactory){
           return (d.x+"%")
         })
         .attr('cy', function(d){return d.y+"%" })
-        .attr('r', ".5vw")
+        .attr('r', "2%")
         // .attr('fill',function(d){return d.color} )
         .attr('fill', 'white' )
         .attr('opacity', '.2')
+        .attr('class', 'heatMapCircle')
 
 
   })
