@@ -52,12 +52,16 @@ project_week.controller('locationsController', function(packageFactory){
   var that = this
   that.errors = []
 
-  that.getPackages = function(){
-    packageFactory.getData(function(data){
-      that.packageData = data
-    })
-  }
-  that.getPackages()
+  packageFactory.start(function(digestedData){
+    that.packageData = digestedData
+
+
+  // that.getPackages = function(){
+  //   packageFactory.getData(function(data){
+  //     that.packageData = data
+  //   })
+  // }
+  // that.getPackages()
   // console.log(that.packageData);
 
 
@@ -109,6 +113,8 @@ project_week.controller('locationsController', function(packageFactory){
         .attr('opacity', '.2')
         .attr('class', 'heatMapCircle')
 
+
+  })
 
   })
 
