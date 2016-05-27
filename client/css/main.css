@@ -93,6 +93,11 @@ a{
       div.box-data{
         height: 280px;
       }
+        h1.totalClicks{
+          font-size: 6em;
+          font-weight: 400;
+          color: #486668;
+        }
       div.large-box-data{
         min-height: 280px;
       }

@@ -1,23 +1,25 @@
 project_week.controller('colorsController', function(packageFactory){
-  console.log('in packagesController')
+  console.log('in colorsController')
   var that = this
   this.errors = []
 
   this.getPackages = function(){
-    packageFactory.getData(function(data){
-      that.packageData = data
-    })
+      this.packageData = {
+        colorGradientByGuess: packageFactory.colorGradientByGuess,
+        colorGradientByGame: packageFactory.colorGradientByGame,
+        totalAvgColor: packageFactory.totalAvgColor,
+        buttonPresses: packageFactory.buttonPresses,
+        hues: packageFactory.hues,
+        maxHueCount: packageFactory.maxHueCount,
+        totalClicks: packageFactory.maxHueCount,
+      }
   }
+
   this.getPackages()
-  // console.log(this.packageData);
+  console.log(this.packageData);
 
-  this.hues = this.packageData.hues
-  this.maxHueCount = this.packageData.maxHueCount
-  this.colorGradientByGuess = this.packageData.colorGradientByGuess
-  this.colorGradientByGame = this.packageData.colorGradientByGame
-  this.totalAvgColor = this.packageData.totalAvgColor
 
-  packageFactory.hueHistogram( function(data){
+  this.hueHistogram = function(data){
         var width = 100
         var canvas = d3.select("div.hueHistogram").append('svg')
           .attr('width', "100%")
@@ -30,22 +32,24 @@ project_week.controller('colorsController', function(packageFactory){
           .data(data)
           .enter()
             .append('rect')
-            // .attr('height', 100)
+            .attr('height', 100)
             .attr('width', (100/18)+'%')
             .attr('x', function(d,i){ return (i*(100/18))+"%" })
-            .attr('y', '100%')
+            .attr('y', '90%')
             .attr('fill', function(d){ return d.color })
             .attr('class', "hue-rect")
             .transition()
               .delay(200)
-              .duration(500)
+              .duration(200)
               .ease('linear')
               .attr('height', function(d){
-                return ((d.count/that.maxHueCount)*100 + '%')
+                return ((d.count/that.packageData.maxHueCount)*100 + '%')
                 })
-              .attr('y', function(d){ return (100-((d.count/that.maxHueCount)*100))+ '%'})
+              .attr('y', function(d){ return (100-((d.count/that.packageData.maxHueCount)*100))+ '%'})
 
-      })
+      }
+      console.log(this.packageData.hues);
+this.hueHistogram(this.packageData.hues)
 
 
 })
@@ -127,13 +131,27 @@ project_week.controller('timesController', function(packageFactory){
   this.errors = []
   var that = this
 
-  packageFactory.get()
+  this.getPackages = function(){
+      this.packageData = {
+        colorGradientByGuess: packageFactory.colorGradientByGuess,
+        colorGradientByGame: packageFactory.colorGradientByGame,
+        totalAvgColor: packageFactory.totalAvgColor,
+        buttonPresses: packageFactory.buttonPresses,
+        hues: packageFactory.hues,
+        maxHueCount: packageFactory.maxHueCount,
+        totalClicks: packageFactory.totalClicks,
+      }
+  }
+
+  this.getPackages()
+
+  console.log(this.packageData);
 
   packageFactory.clicksOverTime(function(data){
 
     var canvas = d3.select('div.clicksOverTime').append('svg')
     .attr('width', '100%')
-    .attr('height', 400)
+    .attr('height', 500)
 
     var background = canvas.append("rect")
       .attr('width', '100%')
@@ -141,9 +159,10 @@ project_week.controller('timesController', function(packageFactory){
       .attr('fill', '#304040')
 
     // var Xaxis =
-    var line = d3.svg.line()
-                  .x(function(d, i){ return (i/data.length)*100 + "%"})
-
+  //   var line = d3.svg.line()
+  //                 .ax(function(d, i){ return (i/data.length)*100 + "%"})
+  //                 .y(function(d, i){ return (i/data.length)*100 + "%"})
+  //
   })
 
 })

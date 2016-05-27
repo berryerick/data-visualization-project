@@ -16,7 +16,7 @@
   <div class="box">
     <h3 class="box-title">Average Color by Chronological Click</h3>
     <div class="box-data">
-      <div class="gradient-section" ng-repeat="x in CC.colorGradientByGuess" style="width: {{100/CC.colorGradientByGuess.length}}%; background-color:{{x.color}}; ">
+      <div class="gradient-section" ng-repeat="x in CC.packageData.colorGradientByGuess" style="width: {{100/CC.packageData.colorGradientByGuess.length}}%; background-color:{{x.color}}; ">
 
       </div>
     </div>
@@ -28,7 +28,7 @@
   <div class="box">
     <h3 class="box-title">Average Color by Game</h3>
     <div class="box-data">
-      <div class="gradient-section" ng-repeat="x in CC.colorGradientByGame" style="width: {{100/CC.colorGradientByGame.length}}%; background-color:{{x.color}}; ">
+      <div class="gradient-section" ng-repeat="x in CC.packageData.colorGradientByGame" style="width: {{100/CC.packageData.colorGradientByGame.length}}%; background-color:{{x.color}}; ">
 
       </div>
     </div>
@@ -40,7 +40,7 @@
   <div class="box">
     <h3 class="box-title">Total Average</h3>
     <div class="box-data">
-      <div class="gradient-section" style="width: 100%; background-color:{{CC.totalAvgColor.color}}; ">
+      <div class="gradient-section" style="width: 100%; background-color:{{CC.packageData.totalAvgColor.color}}; ">
         <h3 ng.bind></h3>
       </div>
     </div>

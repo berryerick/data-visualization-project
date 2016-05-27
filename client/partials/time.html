@@ -1,4 +1,4 @@
-<div class="locationsController" ng-controller="locationsController as LC">
+<div class="timesController" ng-controller="timesController as TC">
   <!-- <p>{{LC}}</p> -->
 
   <!-- <button type="button" ng-click="LC.allPackages = true" name="button">Attempt Histogram</button> -->
@@ -9,7 +9,6 @@
     <h3 class="box-title">Attemp HeatMap</h3>
       <div class="box-data">
         <div class="clicksOverTime">
-
         </div>
       </div>
     <div class="box-description">
@@ -19,7 +18,7 @@
   <div class="box">
     <h3 class="box-title">Total Clicks</h3>
     <div class="box-data">
-      <h1 ng-bind="TC.totalClicks"></h1>
+      <h1 ng-bind="TC.packageData.totalClicks" class="totalClicks"></h1>
     </div>
     <div class="box-description">
 
