@@ -23,8 +23,8 @@ project_week.controller('colorsController', function(packageFactory){
         var width = 100
         var canvas = d3.select("div.hueHistogram").append('svg')
           .attr('width', "100%")
-          .attr('height', 280)
-          .attr('vertical-align', "bottom")
+          .attr('height', '100%')
+          // .attr('vertical-align', "bottom")
 
         var x = d3.scale.linear()
           // .domain({0,width})
@@ -32,7 +32,7 @@ project_week.controller('colorsController', function(packageFactory){
           .data(data)
           .enter()
             .append('rect')
-            .attr('height', 100)
+            .attr('height', '10%')
             .attr('width', (100/18)+'%')
             .attr('x', function(d,i){ return (i*(100/18))+"%" })
             .attr('y', '90%')
@@ -117,14 +117,14 @@ project_week.controller('locationsController', function(packageFactory){
       .enter()
         .append('circle')
         .attr('cx', function(d){
-          console.log(d);
-          return d.x+"%"
+          // console.log(d);
+          return (d.x+"%")
         })
         .attr('cy', function(d){return d.y+"%" })
         .attr('r', ".5vw")
         // .attr('fill',function(d){return d.color} )
         .attr('fill', 'white' )
-        .attr('opacity', '.3')
+        .attr('opacity', '.2')
 
 
   })

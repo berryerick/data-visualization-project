@@ -20,9 +20,9 @@ project_week.factory('packageFactory', function($http, $location, $routeParams){
   factory.totalClicks =           0
   factory.maxHueCount =           0
 
-  factory.coordinates = []
+  factory.coordinates =           []
 
-  //time VARIABLES
+//time VARIABLES
   var d = new Date(factory.packages[0].createdAt)
   factory.genesis =  d.getTime()
   console.log(factory.genesis);
@@ -36,8 +36,24 @@ project_week.factory('packageFactory', function($http, $location, $routeParams){
       r = parseInt(hex.substring(0,2), 16);
       g = parseInt(hex.substring(2,4), 16);
       b = parseInt(hex.substring(4,6), 16);
-      var h = rgbToHsl([r, g, b])
+      var currColor = [r, g, b]
+      var h = rgbToHsl(currColor)
 
+      // calc totalAvgColor
+      // console.log(factory.totalAvgColor);
+      if(!factory.totalAvgColor){
+        factory.totalAvgColor = {count:1, color: currColor}
+      }else {
+        for (i in factory.totalAvgColor.color){
+        factory.totalAvgColor.color[i] = ((factory.totalAvgColor.color[i]*factory.totalAvgColor.count)+currColor[i]) / (factory.totalAvgColor.count+1)
+        }
+        console.log(factory.totalAvgColor);
+
+
+        // console.log('adding color to total average', factory.totalAvgColor);
+        factory.totalAvgColor.count ++
+
+      }
       //add to hue values
       factory.hues[h].count ++
       if (factory.hues[h].count>factory.maxHueCount){
@@ -153,10 +169,11 @@ project_week.factory('packageFactory', function($http, $location, $routeParams){
 
         if(activities[x].type =="buttonPress"){
           // console.log(activities[x].data);
+
         //log relative coordinates
         factory.coordinates.push({
-          x: ((activities[x].data.x/activities[x].data.windowWidth)*100).toFixed(2),
-          y: ((activities[x].data.y/activities[x].data.windowHeight)*100).toFixed(2),
+          x: Math.floor((activities[x].data.x/activities[x].data.windowWidth)*100),
+          y: Math.floor((activities[x].data.y/activities[x].data.windowHeight)*100),
           color: activities[x].data.color,
         })
         // console.log(factory.coordinates[0]);
@@ -186,15 +203,7 @@ project_week.factory('packageFactory', function($http, $location, $routeParams){
           // console.log(factory.colorGradientByGame);
 
 
-          // calc totalAvgColor
-          // console.log(factory.totalAvgColor);
-          if(!factory.totalAvgColor){
-            factory.totalAvgColor = {count:1, color: packageColor}
-          }else {
-            factory.totalAvgColor.color = avgcolor(factory.totalAvgColor, packageColor)
-            // console.log('adding color to total average', factory.totalAvgColor);
-            factory.totalAvgColor.count ++
-          }
+
 
 
           gameButtonCount++
@@ -206,6 +215,9 @@ project_week.factory('packageFactory', function($http, $location, $routeParams){
         else if (activities[x].type == 'gameEnd') {
         }
       }
+    }
+    for (var i = 0; i < factory.totalAvgColor.color.length; i++) {
+      factory.totalAvgColor.color[i] = Math.floor(factory.totalAvgColor.color[i])
     }
     // factory.hues = factory.hues.sort()
   }
