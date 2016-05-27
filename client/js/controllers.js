@@ -72,12 +72,12 @@ project_week.controller('locationsController', function(packageFactory){
 
 // create heat map
 
-  packageFactory.heatMap(1500, 1080, function( boardX, boardY, data){
-      var canvX = 100
-      var canvY = 100
+  packageFactory.heatMap(function(data){
+      // var canvX = 100
+      // var canvY = 100
       var canvas = d3.select('div.allClicksHeatMap').append('svg')
       .attr('width', '100%')
-      .attr('height', 400)
+      .attr('height', '100%')
 
 
       // .attr('width', boardX/2 +100)
@@ -92,7 +92,7 @@ project_week.controller('locationsController', function(packageFactory){
 
     canvas.append("rect")
       .attr('width', '100%')
-      .attr('height', 560)
+      .attr('height', '100%')
       .attr('fill', '#304040')
 
     for (var i = 10; i < 100; i += 10) {
@@ -116,10 +116,14 @@ project_week.controller('locationsController', function(packageFactory){
       .data(data)
       .enter()
         .append('circle')
-        .attr('cx', function(d){return ((d.data.x)/boardX)*100 +"%" })
-        .attr('cy', function(d){return ((d.data.y)/boardY)*100 +"%" })
-        .attr('r', 10)
-        .attr('fill',function(d){return d.data.color} )
+        .attr('cx', function(d){
+          console.log(d);
+          return d.x+"%"
+        })
+        .attr('cy', function(d){return d.y+"%" })
+        .attr('r', ".5vw")
+        // .attr('fill',function(d){return d.color} )
+        .attr('fill', 'white' )
         .attr('opacity', '.3')
 
 
@@ -140,6 +144,7 @@ project_week.controller('timesController', function(packageFactory){
         hues: packageFactory.hues,
         maxHueCount: packageFactory.maxHueCount,
         totalClicks: packageFactory.totalClicks,
+        coordinates: packageFactory.coordinates,
       }
   }
 
@@ -151,11 +156,11 @@ project_week.controller('timesController', function(packageFactory){
 
     var canvas = d3.select('div.clicksOverTime').append('svg')
     .attr('width', '100%')
-    .attr('height', 500)
+    .attr('height', '100%')
 
     var background = canvas.append("rect")
       .attr('width', '100%')
-      .attr('height', 560)
+      .attr('height', '100%')
       .attr('fill', '#304040')
 
     // var Xaxis =
