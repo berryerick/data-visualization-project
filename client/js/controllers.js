@@ -3,15 +3,10 @@ project_week.controller('colorsController', function(packageFactory){
   var that = this
   that.errors = []
 
-  // that.getPackages = packageFactory.getData(function(digestedData){
-  //   that.packageData = digestedData
-  // })
   packageFactory.start(
-  // that.getPackages()
-  // console.log(that.packageData);
+
   function(digestedData){
   that.packageData = digestedData
-  console.log("&&&&&&&&&&&&&&&&&&&&&&",digestedData);
   that.hueHistogram = function(data){
         var width = 100
         var canvas = d3.select("div.hueHistogram").append('svg')
