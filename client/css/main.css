@@ -85,10 +85,11 @@ a{
       /*height:*/
     }
       h3.box-title{
-        height: 30px;
+        /*height: px;*/
         text-align: left;
         font-weight: 300;
         font-size: 1.25em;
+        margin: 10px auto;
       }
       div.box-data{
         height: 18.54vw;
@@ -108,11 +109,10 @@ a{
       }
       div.box-description{
         text-align: left;
-        height: 60px;
+        height: 30px;
         margin-top: 10px;
       }
       .hue-rect{
-        hie
         vertical-align: text-bottom;
       }
 
